@@ -1,0 +1,10 @@
+{
+  "printWidth": 140,
+  "tabWidth": 2,
+  "tabSize": 2,
+  "proseWrap": "never",
+  "singleQuote": true,
+  "disableLanguages": [
+    "html"
+  ]
+}

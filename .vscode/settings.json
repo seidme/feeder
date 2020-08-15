@@ -1,0 +1,9 @@
+{
+    "html.format.wrapAttributes": "force-aligned",
+    "editor.formatOnSave": false,
+    "tslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.tslint": true
+    }
+  }
+  
