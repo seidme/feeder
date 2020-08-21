@@ -1,0 +1,22 @@
+:host {
+  height: 100%;
+
+  .container {
+    width: 380px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transition: width 0.2s;
+    @media only screen and (max-width: 768px) {
+      position: fixed;
+      width: 0;
+    }
+
+    &.fixed-visible {
+      position: fixed;
+      width: 380px;
+      z-index: 999;
+    }
+  }
+}
