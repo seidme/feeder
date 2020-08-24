@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TogglerComponent } from './components/toggler/toggler.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 
 @NgModule({
@@ -21,7 +20,7 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
     BrowserAnimationsModule,
     SidebarComponent,
     HeaderComponent,
-    HamburgerComponent
+    HamburgerComponent,
   ],
   declarations: [SidebarComponent, HeaderComponent, HamburgerComponent],
 })

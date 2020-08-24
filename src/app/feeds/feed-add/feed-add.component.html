@@ -1,1 +1,42 @@
-<p>feed-add works!</p>
+<div class="layout">
+    <h4>Add a new feed</h4>
+
+    <form (ngSubmit)="onSubmit()"
+          #form="ngForm">
+
+        <div class="form-field">
+            <label for="name"></label>
+            <input type="text"
+                   name="name"
+                   class="flx-input"
+                   placeholder="Type your feed name..."
+                   required
+                   [ngModel]="newFeed.name"
+                   (ngModelChange)="newFeed.name = $event"
+                   #name="ngModel" />
+            <div *ngIf="submitted && name.errors?.required"
+                 class="flx-input-validation-message">
+                Required
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label for="url"></label>
+            <input type="text"
+                   name="url"
+                   class="flx-input"
+                   placeholder="Copy your RSS url..."
+                   required
+                   [ngModel]="newFeed.url"
+                   (ngModelChange)="newFeed.url = $event"
+                   #url="ngModel" />
+            <div *ngIf="submitted && name.errors?.required"
+                 class="flx-input-validation-message">
+                Required
+            </div>
+        </div>
+
+        <button type="submit"
+                class="flx-button flx-button-primary">Add feed</button>
+    </form>
+</div>

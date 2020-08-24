@@ -1,9 +1,20 @@
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
-<app-feed></app-feed>
+<div class="layout">
+    <input type="search"
+           name="searchTerm"
+           class="flx-input"
+           placeholder="Filter your feeds..."
+           #searchInput
+           [ngModel]="searchTerm"
+           (ngModelChange)="filterFeeds($event)" />
+
+    <ul class="feeds">
+        <li *ngFor="let feed of filteredFeeds"
+            [@listItemInsertRemoveAnimation]>
+            <span class="title">{{feed.name}}</span>
+            <button type="button"
+                    class="delete-btn"
+                    title="Delete feed"
+                    (click)="deleteFeed(feed)">x</button>
+        </li>
+    </ul>
+</div>

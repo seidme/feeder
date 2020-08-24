@@ -2,7 +2,7 @@
   height: 100%;
 
   .container {
-    width: 380px;
+    width: 300px;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -15,7 +15,7 @@
 
     &.fixed-visible {
       position: fixed;
-      width: 380px;
+      width: 300px;
       z-index: 999;
     }
   }
