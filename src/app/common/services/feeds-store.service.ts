@@ -12,8 +12,8 @@ can easily be incorporated.
 @Injectable({
   providedIn: 'root',
 })
-export class FeedsService {
-  static readonly feedsStorageKey = 'FEEDS';
+export class FeedsStoreService {
+  private readonly FEEDS_STORAGE_KEY = 'FEEDS';
 
   /*
   Make _feedsSource private so it's not accessible from the outside,
@@ -26,7 +26,7 @@ export class FeedsService {
   readonly feeds$ = this._feedsSource.asObservable();
 
   constructor(protected storageService: StorageService) {
-    const feeds = this.storageService.get(FeedsService.feedsStorageKey);
+    const feeds = this.storageService.get(this.FEEDS_STORAGE_KEY);
     this._feedsSource.next(feeds || []);
   }
 
@@ -36,7 +36,7 @@ export class FeedsService {
   }
 
   private _setFeeds(feeds: Feed[]): void {
-    this.storageService.set(FeedsService.feedsStorageKey, feeds);
+    this.storageService.set(this.FEEDS_STORAGE_KEY, feeds);
     this._feedsSource.next(feeds);
   }
 
@@ -46,12 +46,15 @@ export class FeedsService {
   }
 
   removeFeed(feed: Feed): void {
-    const feeds = this.getFeeds().filter((f) => f.name !== feed.name);
+    const feeds = this.getFeeds().filter((f) => f.url !== feed.url);
     this._setFeeds(feeds);
   }
 
-  markFeedAsDeleted(feed: Feed): void {
-    const feeds = this.getFeeds().map((f) => (f.name === feed.name ? new Feed({ ...f, ...{ deleted: true } }) : f));
-    this._setFeeds(feeds);
+  feedNameExists(name: string): boolean {
+    return this.getFeeds().some((f) => f.name.toLocaleLowerCase() === name.toLocaleLowerCase());
+  }
+
+  feedUrlExists(url: string): boolean {
+    return this.getFeeds().some((f) => f.url === url);
   }
 }

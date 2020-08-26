@@ -5,7 +5,15 @@
 }
 
 .flx-right-shadow {
+  box-shadow: 5px 0px 5px -2px rgba(0, 0, 0, 0.15);
+}
+
+.flx-right-up-shadow {
   box-shadow: 3px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.flx-bottom-shadow {
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.15);
 }
 
 .flx-text {
@@ -53,7 +61,7 @@
   }
 }
 
-.flx-input-validation-message{
+.flx-input-validation-message {
   color: #fe6e6e;
   font-size: 12px;
   margin-left: 5px;

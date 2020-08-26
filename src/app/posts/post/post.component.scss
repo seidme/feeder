@@ -1,0 +1,58 @@
+$assetsPath: '../../../assets';
+
+:host {
+  flex: 1 0 300px;
+  width: 300px;
+  margin: 0.4rem;
+  background-color: #fff;
+  box-shadow: 0px 5px 20px 0 #d2cece;
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    background-color: #575f6a;
+    padding: 20px;
+
+    a {
+      background-image: url(#{$assetsPath}/icons/link.png);
+      background-size: 16px;
+      height: 14px;
+      width: 16px;
+      i:hover {
+        cursor: pointer;
+      }
+    }
+
+    .feed-title {
+      color: #608cb2;
+      margin-right: auto;
+      margin-left: 10px;
+    }
+    
+    .date-time {
+      font-size: 12px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .content {
+    padding: 20px;
+
+    h3 {
+      color: #575f6a;
+      font-weight: normal;
+      margin: 0;
+    }
+
+    p {
+      max-height: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { trigger, transition, useAnimation } from '@angular/animations';
 
 import { Debounce } from '@feeder/app/common/decorators';
 import { Feed } from '@feeder/app/common/models';
-import { FeedsService } from '@feeder/app/common/services';
+import { FeedsStoreService } from '@feeder/app/common/services';
 import { UnsubscribeOnDestroy } from '@feeder/app/common/classes';
 import { listItemInsert, listItemRemove } from '@feeder/app/common/animations';
 
@@ -24,14 +24,14 @@ export class FeedListComponent extends UnsubscribeOnDestroy implements OnInit {
   feeds: Feed[] = [];
   filteredFeeds: Feed[] = [];
 
-  constructor(protected feedsService: FeedsService) {
+  constructor(protected feedsStoreService: FeedsStoreService) {
     super();
   }
 
   ngOnInit(): void {
     this.addTestFeedIfNoFeeds();
 
-    this.feedsService.feeds$.pipe(takeUntil(this.destroyed$)).subscribe((feeds) => {
+    this.feedsStoreService.feeds$.pipe(takeUntil(this.destroyed$)).subscribe((feeds) => {
       this.feeds = feeds;
       this.filterFeeds(this.searchTerm);
     });
@@ -42,14 +42,15 @@ export class FeedListComponent extends UnsubscribeOnDestroy implements OnInit {
     this.filteredFeeds = this.feeds.filter((f) => f.name.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) > -1);
   }
 
-  deleteFeed(feed: Feed): void {
-    this.feedsService.removeFeed(feed);
+  removeFeed(feed: Feed): void {
+    this.feedsStoreService.removeFeed(feed);
   }
 
   addTestFeedIfNoFeeds(): void {
-    const feeds = this.feedsService.getFeeds();
+    const feeds = this.feedsStoreService.getFeeds();
     if (!feeds.length) {
-      this.feedsService.addFeed(new Feed({ name: 'Adweek Test Feed', url: 'https://www.adweek.com/feed/' }));
+      this.feedsStoreService.addFeed(new Feed({ name: 'Adweek', url: 'https://www.adweek.com/feed/' }));
+      this.feedsStoreService.addFeed(new Feed({ name: 'TechCrunch', url: 'https://techcrunch.com/feed/' }));
     }
   }
 }

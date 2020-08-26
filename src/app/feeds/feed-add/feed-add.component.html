@@ -10,13 +10,16 @@
                    name="name"
                    class="flx-input"
                    placeholder="Type your feed name..."
-                   required
                    [ngModel]="newFeed.name"
-                   (ngModelChange)="newFeed.name = $event"
+                   (ngModelChange)="newFeed.name = $event;"
                    #name="ngModel" />
             <div *ngIf="submitted && name.errors?.required"
                  class="flx-input-validation-message">
                 Required
+            </div>
+            <div *ngIf="submitted && name.errors?.alreadyExists"
+                 class="flx-input-validation-message">
+                Already exists
             </div>
         </div>
 
@@ -26,13 +29,20 @@
                    name="url"
                    class="flx-input"
                    placeholder="Copy your RSS url..."
-                   required
                    [ngModel]="newFeed.url"
-                   (ngModelChange)="newFeed.url = $event"
+                   (ngModelChange)="newFeed.url = $event;"
                    #url="ngModel" />
-            <div *ngIf="submitted && name.errors?.required"
+            <div *ngIf="submitted && url.errors?.required"
                  class="flx-input-validation-message">
                 Required
+            </div>
+            <div *ngIf="submitted && url.errors?.alreadyExists"
+                 class="flx-input-validation-message">
+                Already exists
+            </div>
+            <div *ngIf="submitted && url.errors?.urlInvalid"
+                 class="flx-input-validation-message">
+                Valid URL example: https://www.adweek.com/feed/
             </div>
         </div>
 

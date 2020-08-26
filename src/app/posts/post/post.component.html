@@ -1,1 +1,15 @@
-<p>post works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<div class="heading">
+    <a [attr.href]="post.link"
+       target="_blank"></a>
+    <div class="feed-title">{{ post.feedTitle }}</div>
+    <span class="date-time">{{ post.pubDate | date: 'MMM dd yyyy | HH:mm'}}</span>
+</div>
+
+<img *ngIf="post.thumbnail"
+     [attr.src]="post.thumbnail"
+     [attr.alt]="'post thumbnail'">
+
+<div class="content">
+    <h3>{{ post.title }}</h3>
+    <p [innerHTML]="post.content"></p>
+</div>

@@ -13,10 +13,23 @@
       width: 0;
     }
 
-    &.fixed-visible {
+    &.fixed-sidebar-visible {
       position: fixed;
       width: 300px;
       z-index: 999;
+    }
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+
+    &.fixed-sidebar-visible {
+      display: block;
     }
   }
 }
