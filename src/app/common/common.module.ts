@@ -5,12 +5,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { LoaderModule } from '@flxng/loader';
+
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 
 @NgModule({
-  imports: [NgCommonModule, BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule],
+  imports: [
+    NgCommonModule,
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    LoaderModule,
+  ],
   exports: [
     NgCommonModule,
     BrowserModule,

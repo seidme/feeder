@@ -13,6 +13,7 @@ export class FeedAddComponent implements OnInit {
   @ViewChild('form') form: NgForm;
 
   submitted = false;
+  validating = false;
   newFeed = Feed.createEmpty();
 
   constructor(protected feedsStoreService: FeedsStoreService, protected rss2JsonService: Rss2JsonService) {}
@@ -21,17 +22,20 @@ export class FeedAddComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.submitted = true;
+    this.validating = true;
 
     this.validateName(this.newFeed.name);
     await this.validateUrl(this.newFeed.url);
 
     if (this.form.invalid) {
+      this.validating = false;
       return;
     }
 
     this.feedsStoreService.addFeed(this.newFeed);
     this.newFeed = Feed.createEmpty();
     this.submitted = false;
+    this.validating = false;
   }
 
   validateName(name: string): void {
