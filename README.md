@@ -10,4 +10,4 @@ Live [DEMO](https://feeder.codeeve.com/).
 - Single responsibility services with single source of truth, read-only state and immutability patterns incorporated
 - Fully typed using TS classes for DTOs and models.
 - PWA, works offline using service workers
-- No dependency on third part libs
+- No dependency on third party libs
