@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Feed } from '@feeder/app/common/models';
 import { NgForm } from '@angular/forms';
 
+import { LoaderDirective } from '@flxng/loader';
+
 import { FeedsStoreService, Rss2JsonService } from '@feeder/app/common/services';
 
 @Component({
@@ -11,9 +13,9 @@ import { FeedsStoreService, Rss2JsonService } from '@feeder/app/common/services'
 })
 export class FeedAddComponent implements OnInit {
   @ViewChild('form') form: NgForm;
+  @ViewChild(LoaderDirective, { static: true }) loader: LoaderDirective;
 
   submitted = false;
-  validating = false;
   newFeed = Feed.createEmpty();
 
   constructor(protected feedsStoreService: FeedsStoreService, protected rss2JsonService: Rss2JsonService) {}
@@ -22,20 +24,20 @@ export class FeedAddComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.submitted = true;
-    this.validating = true;
+    this.loader.show();
 
     this.validateName(this.newFeed.name);
     await this.validateUrl(this.newFeed.url);
 
     if (this.form.invalid) {
-      this.validating = false;
+      this.loader.hide();
       return;
     }
 
     this.feedsStoreService.addFeed(this.newFeed);
     this.newFeed = Feed.createEmpty();
     this.submitted = false;
-    this.validating = false;
+    this.loader.hide();
   }
 
   validateName(name: string): void {

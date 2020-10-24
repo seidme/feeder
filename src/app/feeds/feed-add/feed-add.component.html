@@ -47,7 +47,10 @@
         </div>
 
         <button type="submit"
-                [flxLoader]="validating"
-                class="flx-button flx-button-primary">Add feed</button>
+                flxLoader
+                [disabled]="loader.isVisible()"
+                class="flx-button flx-button-primary add-feed-btn">
+            <span *ngIf="!loader.isVisible()">Add feed</span>
+        </button>
     </form>
 </div>

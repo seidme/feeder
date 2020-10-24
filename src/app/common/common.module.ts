@@ -28,6 +28,7 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    LoaderModule,
     SidebarComponent,
     HeaderComponent,
     HamburgerComponent,
